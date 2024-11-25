@@ -1,0 +1,29 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}View Files{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="text-center">Processed Files</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Columns</th>
+                    <th>Shape (Rows x Columns)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                <tr>
+                    <td>{{ file.file_name }}</td>
+                    <td>{{ file.columns|join:", " }}</td>
+                    <td>{{ file.shape.0 }} x {{ file.shape.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
