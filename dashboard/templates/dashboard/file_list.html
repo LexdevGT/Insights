@@ -1,25 +1,23 @@
 {% extends 'dashboard/base.html' %}
 
-{% block title %}View Files{% endblock %}
-
 {% block content %}
-<div class="row">
-    <div class="col">
-        <h1 class="text-center">Processed Files</h1>
-        <table class="table table-striped mt-3">
-            <thead>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Processed Files</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
                     <th>File Name</th>
                     <th>Columns</th>
-                    <th>Shape (Rows x Columns)</th>
+                    <th>Rows × Columns</th>
                 </tr>
             </thead>
             <tbody>
                 {% for file in files %}
                 <tr>
                     <td>{{ file.file_name }}</td>
-                    <td>{{ file.columns|join:", " }}</td>
-                    <td>{{ file.shape.0 }} x {{ file.shape.1 }}</td>
+                    <td><small>{{ file.columns|join:", " }}</small></td>
+                    <td>{{ file.shape.0 }} × {{ file.shape.1 }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
